@@ -19,7 +19,7 @@ export default function Home() {
       }}
       onClick={increment}>Inrement</Button>
        <Button variant="contained" sx={{
-        backgroundColor:'',
+        backgroundColor:'red',
         width:'150px'
       }}
       onClick={decrement}>Decrement</Button>
