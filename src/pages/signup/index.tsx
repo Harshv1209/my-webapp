@@ -5,7 +5,7 @@ import { myTheme } from '../theme'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import IconButton from '@mui/material/IconButton';
 
-const LoginPage = () => {
+const SignupPage = () => {
   const [checked, setChecked] = useState(true)
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -14,7 +14,7 @@ const LoginPage = () => {
 
   
   return (
-    <Stack 
+    <Stack spacing={4}
     sx={{
       position:'absolute',
       top:'50%',
@@ -23,7 +23,7 @@ const LoginPage = () => {
       width: '600px',
     padding: '48px',
     alignItems:'center',
-    gap:'48px',
+    // gap:'48px',
     borderRadius:'32px',
     bgcolor:'white'
     }}>
@@ -34,6 +34,61 @@ const LoginPage = () => {
       height={72}
       unoptimized />
       {/* logo closed */}
+
+       {/* fullname input */}
+   <Stack spacing={1} justifyContent={'flex-start'} width={400}>
+    <Stack direction={'row'} alignItems={'center'} spacing={1}>
+    {/* label*/}
+    <Typography sx={{
+      fontSize: '14px',
+      fontWeight: 600,
+      lineHeight:'20px'
+    }}>Full Name</Typography>
+    <Typography sx={{
+      fontSize: '14px',
+      fontWeight: 600,
+      lineHeight:'20px',
+      color:myTheme.color.destructive[500]
+    }}>*</Typography>
+    </Stack>
+    {/* input */}
+    <TextField sx={{
+      width:'100%',
+      height:'40px',
+      borderRadius:'6px',
+      bgcolor:'#FFF',
+      border:'1px solid neutral[300]',
+      '& .MuiOutlinedInput-root': {
+        fontSize: '14px',
+        lineHeight: '20px',
+        height: '100%',
+        '& fieldset': {
+            borderColor: myTheme.color.neutral[300],
+        },
+        '&:hover fieldset': {
+            borderColor: '#E0E0E0',
+        },
+        '&.Mui-focused fieldset': {
+            borderColor: '#E0E0E0',
+            border: 'none'
+        },
+    },
+    }} variant='outlined' placeholder='john Doe'
+    type='text'
+    InputProps={{
+      startAdornment:(
+        <Image src="/assets/icons/login/account.svg"
+        alt='account'
+        width={24}
+        height={24}
+        unoptimized 
+        style={{marginRight:'16px'}}/>
+      )
+    }}
+      ></TextField>
+    
+   </Stack>
+    {/* fullname closed*/}
 
    {/* email input */}
    <Stack spacing={1} justifyContent={'flex-start'} width={400}>
@@ -146,7 +201,7 @@ const LoginPage = () => {
    </Stack>
    {/* password closed */}
    {/* Remeber me in checkbox */}
-   <Stack spacing={1} alignItems={'center'} direction={'row'} width={400}>
+   <Stack spacing={0.1} alignItems={'center'} direction={'row'} width={400}>
    <Checkbox
       checked={checked}
       onChange={handleChange}
@@ -158,7 +213,21 @@ const LoginPage = () => {
       fontWeight:400,
       color: myTheme.text.light.active,
       cursor: 'pointer',
-    }} onClick={() => { setChecked(!checked) }}>Remember Me</Typography>
+    }} onClick={() => { setChecked(!checked) }}>I agree to all</Typography>
+    <Button
+                    variant="text"
+                    sx={{
+                        fontSize: '14px',
+                        lineHeight: '20px',
+                        fontWeight: 400,
+                        color: myTheme.color.primary[500],
+                        textTransform: 'none',
+                        // marginRight:'1px',
+                        // padding: '4px 8px'
+                    }}
+                >
+                    Terms & Conditions
+                </Button>
    </Stack>
    {/* checkbox closed */}
     {/* actions button */}
@@ -177,7 +246,7 @@ const LoginPage = () => {
                     }}
                     variant="contained"
                 >
-                    Login
+                    sign up
                     <ChevronRightIcon />
                 </Button>
 
@@ -234,7 +303,7 @@ const LoginPage = () => {
       
           
               
-            <Stack direction="row" alignItems="center" spacing={1} width={400} justifyContent={'center'}>
+            <Stack direction="row" alignItems="center" spacing={0.1} width={400} justifyContent={'center'}>
                 <Typography
                     sx={{
                         fontSize: '14px',
@@ -243,7 +312,7 @@ const LoginPage = () => {
                         color: myTheme.text.light.active,
                     }}
                 >
-                    New here? Create an account.
+                   Already  have an account?
                 </Typography>
 
                 <Button
@@ -254,9 +323,10 @@ const LoginPage = () => {
                         fontWeight: 400,
                         color: myTheme.color.primary[500],
                         textTransform: 'none',
+                        padding:0
                     }}
                 >
-                    Sign up
+                    Log in
                 </Button>
             </Stack>
             
@@ -264,4 +334,4 @@ const LoginPage = () => {
   )
 }
 
-export default LoginPage
+export default SignupPage
